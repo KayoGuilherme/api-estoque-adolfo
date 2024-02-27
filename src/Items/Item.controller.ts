@@ -12,7 +12,7 @@ import { UpdateItemDto } from "./dto/update-Item.dto";
 
 @UseGuards(AuthGuard)
 @Controller('Product')
-@ApiTags('Controle de Produtos')
+@ApiTags('Controle de Items')
 export class ItemController {
 
     constructor(
