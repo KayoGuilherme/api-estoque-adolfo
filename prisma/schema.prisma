@@ -3,12 +3,12 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model users {
-  id        Int @id  @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   nome      String   @db.VarChar(125)
   email     String   @unique @db.VarChar(125)
   senha     String   @db.VarChar(100)
@@ -18,16 +18,24 @@ model users {
 }
 
 model Item {
-  id_item  Int @id  @default(autoincrement())
+  id_item    Int    @id @default(autoincrement())
   nome       String
   estoque    Int
-  categoryId Int 
+  categoryId Int
 
   categoria Category @relation(fields: [categoryId], references: [id])
 }
 
+model Components {
+  id_component   Int        @id @default(autoincrement())
+  nome_component String
+  Category       Category[]
+}
+
 model Category {
-  id   Int    @id @default(autoincrement())
-  nome String
-  item Item[]
+  id           Int        @id @default(autoincrement())
+  nome         String
+  component_id Int
+  component    Components @relation(fields: [component_id], references: [id_component])
+  item         Item[]
 }
