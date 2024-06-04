@@ -66,8 +66,10 @@ export class AuthService {
 
     if (!user) throw new UnauthorizedException('Email ou senha incorretos')
 
-    if (! await bcrypt.compare(senha, user.senha)) {
-      throw new UnauthorizedException('Email ou senha incorretos')
+    const hashSenha = await bcrypt.compare(senha, user.senha)
+
+    if(!hashSenha) {
+      throw new UnauthorizedException('Email ou senha incorretos');
     }
 
     return this.createToken(user)
