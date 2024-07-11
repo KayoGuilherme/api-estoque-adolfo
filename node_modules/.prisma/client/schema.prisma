@@ -17,25 +17,24 @@ model users {
   updatedAt DateTime @updatedAt
 }
 
-model Item {
-  id_item    Int    @id @default(autoincrement())
-  nome       String
-  estoque    Int
-  categoryId Int
-
-  categoria Category @relation(fields: [categoryId], references: [id])
+model components {
+  id              Int     @id @default(autoincrement())
+  nome_componente String
+  Items           Items[]
 }
 
-model Components {
-  id_component   Int        @id @default(autoincrement())
-  nome_component String
-  Category       Category[]
-}
-
-model Category {
+model Items {
   id           Int        @id @default(autoincrement())
-  nome         String
+  nome_item    String
+  estoque      Int
   component_id Int
-  component    Components @relation(fields: [component_id], references: [id_component])
-  item         Item[]
+  lab_id       Int
+  lab          labs       @relation(fields: [lab_id], references: [id])
+  component    components @relation(fields: [component_id], references: [id])
+}
+
+model labs {
+  id       Int     @id @default(autoincrement())
+  nome_lab String
+  Items    Items[]
 }

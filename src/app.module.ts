@@ -8,9 +8,9 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { PrismaModule } from './database/prisma.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
-import { CategoryItemModule } from './CategoryItem/category.module';
+import { CategoryItemModule } from './components/components.module';
 import { ItemModule } from './Items/Item.module';
-import { ComponentsCategoryModule } from './components-category/components-category.module';
+import { ComponentsCategoryModule } from './labs-item/labs-item.module';
 
 
 
