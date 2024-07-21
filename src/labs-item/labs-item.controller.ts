@@ -5,6 +5,7 @@ import {
   Body,
   Delete,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 
 import { UpdateLabsDto } from './dto/update-components-category.dto';
@@ -12,7 +13,10 @@ import { ApiTags } from '@nestjs/swagger';
 import { LabService } from './labs-item.service';
 import { LabsDto } from './dto/create-components-category.dto';
 import { Paramid } from 'src/decorators/param-id.decorator';
+import { AuthGuard } from 'src/guards/auth.guard';
 
+
+@UseGuards(AuthGuard)
 @ApiTags('Controle de laboratorios')
 @Controller('labs-item')
 export class ComponentsCategoryController {
