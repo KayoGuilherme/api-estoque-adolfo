@@ -36,15 +36,15 @@ export class AuthController {
     }
   
 
-    @Post('Forget')
-    async forget(@Body() {email}: AuthForgetDTO) {
-        return this.AuthService.forget(email)
-    }
+    // @Post('Forget')
+    // async forget(@Body() {email}: AuthForgetDTO) {
+    //     return this.AuthService.forget(email)
+    // }
 
-    @Post('UpdatePass')
-    async updatePass(@Body() {senha, token}: AuthUpdateDTO, id: number) {
-        return this.AuthService.updatePass( senha, token, id)
-    }
+    // @Post('UpdatePass')
+    // async updatePass(@Body() {senha, token}: AuthUpdateDTO, id: number) {
+    //     return this.AuthService.updatePass( senha, token, id)
+    // }
 
   
 }
